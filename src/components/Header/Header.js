@@ -1,5 +1,5 @@
 import React from 'react';
-import MainLogo from '../../assets/logo.svg'
+import MainLogo from '../../assets/logo.png'
 
 const Header = () => {
     return (
@@ -12,7 +12,7 @@ const Header = () => {
             <div className='menus'>
                 
                     <button>Company</button>
-                    <button>Servies</button>
+                    <button>Services</button>
                     <button>Hire Developers</button>
                     <button>Case Study</button>
                     <button>Resources</button>

@@ -1,7 +1,7 @@
 import React from 'react';
-import indFlag from '../../assets/indiaflag.png';
-import usaFlag from '../../assets/usaflag.png';
-import ukFlag from '../../assets/ukflag.png';
+import indFlag from '../../assets/ind-flag.png';
+import usaFlag from '../../assets/us-flag.png';
+import ukFlag from '../../assets/uk-flag.png';
 
 import './TopHeader.css';
 
