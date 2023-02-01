@@ -8,8 +8,13 @@ import youtube from '../../assets/yt-icon.svg';
 import topapp from '../../assets/tp-icon.svg';
 const SocialMedia = () => {
     return (
-        <div>
+        <div className='flex'>
             <div className='socialHeading'>
+               <h1>Social Media</h1>
+               <p>Don’t Miss To Follow Us On Our Social
+                    Networks Accounts.</p>
+            </div>
+            <div className='flex socialIcons'>
                 <img src={facebook} alt="" />
                 <img src={twitter} alt="" />
                 <img src={instagram} alt="" />
@@ -17,7 +22,6 @@ const SocialMedia = () => {
                 <img src={youtube} alt="" />
                 <img src={topapp} alt="" />
             </div>
-            <div className='socialIcons'></div>
         </div>
     );
 };
