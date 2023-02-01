@@ -3,7 +3,7 @@ import indFlag from '../../assets/indiaflag.png';
 import usaFlag from '../../assets/usaflag.png';
 import ukFlag from '../../assets/ukflag.png';
 
-import './TopHeader.css'
+import './TopHeader.css';
 
 
 const TopHeader = () => {
@@ -22,6 +22,7 @@ const TopHeader = () => {
                 <img src={ukFlag} alt="" />
                     <h1>+44 20 8133 8639</h1>
                 </div>
+                
             </div>
             <div className="right">
                 <button>Press Release</button>

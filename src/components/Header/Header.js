@@ -1,12 +1,13 @@
 import React from 'react';
-import Logo from '../../assets/logosite.png';
-import icon from '../../assets/in-icon.svg';
+import MainLogo from '../../assets/logo.svg'
+
 const Header = () => {
     return (
         <div>
             <div className="logo">
-                <img src={Logo} alt="" />
-                <img src={icon} alt=""/>
+                
+                <img src={MainLogo} alt="" />
+               
             </div>
             <div className='menus'>
                 <ul>
