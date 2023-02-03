@@ -4,7 +4,7 @@ import './Header.css'
 
 const Header = () => {
     return (
-        <div className='flex justify-between px-16 shadow-lg py-4 sticky'>
+        <div className='flex justify-between px-16 shadow-lg py-4 z-50 sticky'>
             <div className="logo">
                 
                 <img src={MainLogo} alt="" />

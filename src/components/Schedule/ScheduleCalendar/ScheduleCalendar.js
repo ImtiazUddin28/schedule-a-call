@@ -13,9 +13,9 @@ export default function ScheduleCalendar() {
     footer = <p className='mt-6 text-lg font-semibold'>You selected {format(selected, 'PP')}.</p>;
   }
   return (
-    <div className='border-2'>
+    <div className='border-2 '>
       <h1 className="text-xl font-bold mx-16 mt-8">Select a Date & Time</h1>
-      <DayPicker className="px-12 py-3"
+      <DayPicker className="px-12 py-3 -z-10"
         styles={{
           caption: { color: 'red' }
         }}

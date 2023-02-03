@@ -4,7 +4,7 @@ import Services from './Services/Services';
 import Subscription from './Subscription/Subscription';
 const Footer = () => {
     return (
-        <div className="footer bg-black absolute -z-10  text-white py-16 px-16">
+        <div className="footer absolute bg-black -z-10 text-white py-16 px-16">
             <Services></Services>
             <Location></Location>
             <Subscription></Subscription>
