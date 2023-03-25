@@ -1,6 +1,9 @@
 import logo from '../../../assets/logo.svg';
 import clock from "../../../assets/clock2.png";
-const ScheduleDetails = ({ selectedTimezone, footer, takenSchedule }) => {
+import { useContext } from 'react';
+import { ScheduleContext } from '../../context/ScheduleContext';
+const ScheduleDetails = () => {
+  const { selectedTimezone, footer, takenSchedule }=useContext(ScheduleContext)
   let Details = (
     <div className="mx-6">
       <p className="py-2">Agenda:</p>

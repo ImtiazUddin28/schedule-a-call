@@ -2,8 +2,11 @@ import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import Timezone from '../Timezone/Timezone';
 import ScheduleEventForm from '../ScheduleEventForm/ScheduleEventForm';
+import { useContext } from 'react';
+import { ScheduleContext } from '../../context/ScheduleContext';
 
-export default function ScheduleCalendar({
+export default function ScheduleCalendar() {
+  const {
   footer,
   selected,
   setSelected,
@@ -11,7 +14,7 @@ export default function ScheduleCalendar({
   setTakenSchedule,
   selectedTimezone, 
   setSelectedTimezone
-}) {
+}=useContext(ScheduleContext)
   let schedules = [
     '10:00am',
     '10:30am',
