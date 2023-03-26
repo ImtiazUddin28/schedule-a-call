@@ -1,53 +1,51 @@
-import { DayPicker } from 'react-day-picker';
-import 'react-day-picker/dist/style.css';
-import Timezone from '../Timezone/Timezone';
-import ScheduleEventForm from '../ScheduleEventForm/ScheduleEventForm';
-import { useContext } from 'react';
-import { ScheduleContext } from '../../context/ScheduleContext';
+import React, { useContext } from "react";
+import { DayPicker } from "react-day-picker";
+import "react-day-picker/dist/style.css";
+import Timezone from "../Timezone/Timezone";
+import ScheduleEventForm from "../ScheduleEventForm/ScheduleEventForm";
+import { ScheduleContext } from "../../context/ScheduleContext";
+
 
 export default function ScheduleCalendar() {
-  const {
-  footer,
-  selected,
-  setSelected,
-  takenSchedule,
-  setTakenSchedule,
-  selectedTimezone, 
-  setSelectedTimezone
-}=useContext(ScheduleContext)
+  const { footer, selected, setSelected, takenSchedule, setTakenSchedule } =
+    useContext(ScheduleContext);
   let schedules = [
-    '10:00am',
-    '10:30am',
-    '11:00am',
-    '11:30am',
-    '12:00pm',
-    '12:30pm',
-    '01:30pm',
-    '02:00pm',
-    '02:30pm',
-    '03:30pm',
-    '04:00pm',
-    '04:30pm'
-  ]
+    "10:00am",
+    "10:30am",
+    "11:00am",
+    "11:30am",
+    "12:00pm",
+    "12:30pm",
+    "01:30pm",
+    "02:00pm",
+    "02:30pm",
+    "03:30pm",
+    "04:00pm",
+    "04:30pm",
+  ];
 
-  // const [buttonConfirm,setButtonConfirm] = useState(false);
+    const isWeekend = (date) => {
+      const day = date.getDay();
+      return day === 0 || day === 6; // Sunday or Saturday
+    };
 
-  // let day = days[selected.getDay()];
 
+  const disabledDates = (date) => {
+    const today = new Date();
+    const futureDate = new Date(today.getTime() + 60 * 24 * 60 * 60 * 1000);
 
- 
-  
+    return date < today || date > futureDate;
+  };
 
-  // let confirmButton = (
-  //   <div className="flex">
-  //     <button className="bg-slate-400 rounded-[5px] py-[3px] px-[9px] text-[12px] font-semibold text-white mr-1">
-  //       {takenSchedule}
-  //     </button>
-  //     <button className="bg-blue-600 rounded-[5px] py-[3px] px-[9px] text-[12px] font-semibold text-white ml-1">
-  //       Confirm
-  //     </button>
-  //   </div>
-  // )
+  const modifiers = {
+    disabledDays: disabledDates,
+    weekend: isWeekend
+  };
+  const modifiersStyles = {
+    disabledDays: { color: "red" },
+    weekend:{color: "red"}
+  };
+ const disabledAllDays = [disabledDates, isWeekend];
 
   let scheduleConfirm = (
     <div>
@@ -68,7 +66,7 @@ export default function ScheduleCalendar() {
         </div>
       ))}
     </div>
-  )
+  );
 
   let calenderZone = (
     <div>
@@ -80,23 +78,23 @@ export default function ScheduleCalendar() {
           <DayPicker
             className="px-2 lg:px-16 py-3 -z-10"
             styles={{
-              caption: { color: 'blue' }
+              caption: { color: "blue" },
             }}
             mode="single"
-            selected={selected}
-            onSelect={setSelected}
+            selectedDays={selected}
+            onDayClick={setSelected}
+            disabled={disabledAllDays}
+            modifiers={modifiers}
+            modifiersStyles={modifiersStyles}
             footer={footer}
           />
           <div className="px-2 lg:px-8">
-            <Timezone
-              selectedTimezone={selectedTimezone}
-              setSelectedTimezone={setSelectedTimezone}
-            />
+            <Timezone />
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 
   if (selected) {
     calenderZone = (
@@ -109,18 +107,18 @@ export default function ScheduleCalendar() {
             <DayPicker
               className="px-2 py-3 -z-10"
               styles={{
-                caption: { color: 'blue' }
+                caption: { color: "blue" },
               }}
               mode="single"
-              selected={selected}
-              onSelect={setSelected}
+              selectedDays={selected}
+              onDayClick={setSelected}
+              disabled={disabledAllDays}
+              modifiers={modifiers}
+              modifiersStyles={modifiersStyles}
               footer={footer}
             />
             <div>
-              <Timezone
-                selectedTimezone={selectedTimezone}
-                setSelectedTimezone={setSelectedTimezone}
-              />
+              <Timezone />
             </div>
           </div>
           <div>
@@ -130,15 +128,14 @@ export default function ScheduleCalendar() {
           </div>
         </div>
       </div>
-    )
+    );
   }
-  if (takenSchedule !== '') {
+  if (takenSchedule !== "") {
     calenderZone = (
       <div>
         <ScheduleEventForm />
       </div>
-    )
+    );
   }
-  return <div className="border-[1px] border-b-0 rounded">{calenderZone}</div>
-  
+  return <div className="border-[1px] border-b-0 rounded">{calenderZone}</div>;
 }
